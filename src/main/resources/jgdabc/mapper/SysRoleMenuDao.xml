@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jgdabc.mapper.SysRoleMenuDao">
+  <resultMap id="BaseResultMap" type="jgdabc.entity.SysRoleMenu">
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="jgdabc.entity.SysRoleMenu">
+    delete from sys_role_menu
+    where mid = #{mid,jdbcType=INTEGER}
+      and rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="rid" keyProperty="rid" parameterType="jgdabc.entity.SysRoleMenu" useGeneratedKeys="true">
+    insert into sys_role_menu (mid)
+    values (#{mid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="rid" keyProperty="rid" parameterType="jgdabc.entity.SysRoleMenu" useGeneratedKeys="true">
+    insert into sys_role_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        mid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
